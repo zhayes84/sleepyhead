@@ -42,8 +42,8 @@ class Day:
 
         Args:
             have_work (str): whether the user has work on the day
-            work_time (str): date and time
-            commute (int): time required to drive from home to work in minutes
+            work_time (str): time to arrive at work
+            commute (int): time required to drive from home to work
             prep (int): time required to prepare for work after waking up
             time_in_bed (int): desired number of hours in bed
         """
