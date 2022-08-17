@@ -23,6 +23,7 @@ Which will then output what time I need to go to bed each day to achieve `x` num
 
 # To-Do
 
- - [ ] Add try/else/except/finally functionality to `departure()`, `bed_time()`, and `wake_up()`
+ - [ ] Add `try`/`else`/`except`/`finally` functionality to `departure()`, `bed_time()`, and `wake_up()`
  - [ ] Ability to output daily and/or weekly schedule to PDF
  - [ ] Create verbose tests for existing code
+ - [ ] Reduce repetition in functions for converting strings to `datetime` and `timedelta` objects
