@@ -1,29 +1,40 @@
 from datetime import datetime, timedelta
 import time
 
-start_time = time.time()
-
 
 class Day:
-    """
-    A Day object consists of all necessary information needed to
-    compute a schedule or all days of the week.
+    """The Day class consists of all necessary information needed to
+    compute a schedule for all days of the week.
 
-    'have_work': boolean determining whether user has work on this specified day
+    Attributes
+    ----------
 
-    'work_time': datetime object specifying year/month/day/hour/minute
+    have_work : bool
+        boolean determining whether user has work on this specified day
 
-    'commute': time required to drive from home to work
+    work_time : str
+        datetime object specifying year/month/day/hour/minute
 
-    'departure': the time required to leave home to make it to work by 'work_time'
+    commute : int
+        time required to drive from home to work
 
-    'prep' is how much time is needed to prepare for work after waking up
+    prep : int
+        how much time is needed to prepare for work after waking up
 
-    'time_in_bed': desired number of hours in bed
+    time_in_bed : int
+        desired number of hours in bed
 
-    'bed_time': time to go to bed based on 'work_time' minus 'prep' minus 'time in bed'
+    Methods
+    -------
 
-    'wake_up': time to wake up
+    departure()
+        Returns datetime object containing the time of departure.
+
+    bed_time()
+        Returns datetime object containing the time to go to bed.
+
+    wake_up()
+        Returns datetime object containing the time to wake up.
     """
 
     def __init__(self, have_work, work_time, commute, prep, time_in_bed):
@@ -34,15 +45,25 @@ class Day:
         self.time_in_bed = time_in_bed
 
     def departure(self):
-        """
-        Takes the time to be at work subtracted by the commute time and
-        returns the necessary departure time to arrive at work on time.
+        """Returns datetime object containing the time of departure.
+
+        Calculates the time to be at work subtracted by the commute time and
+        returns the necessary departure time required to arrive at work on
+        time.
+        ---
+        departure time = time to arrive at work - commute time
         """
         commute_object = timedelta(minutes=self.commute)
         work_time_object = datetime.strptime(self.work_time, "%B %d, %Y %I:%M %p")
         return work_time_object - commute_object
 
     def bed_time(self):
+        """Returns datetime object containing the time to go to bed.
+
+        Calculates the time to go to bed based on the time necessary to depart to work subtracted by the sum of preparation time and hours desired in bed.
+        ---
+        bed_time = departure time - (preparation time + time in bed)
+        """
         prep_object = timedelta(hours=self.prep)
         time_in_bed_object = timedelta(hours=self.time_in_bed)
         commute_object = timedelta(minutes=self.commute)
@@ -53,6 +74,12 @@ class Day:
         )  # displays bed_time in 'MMMM DD, YYYY T:TT AM' format
 
     def wake_up(self):
+        """Returns datetime object containing the time to wake up.
+
+        Calculates the time to wake up based on subtracting preparation time from departure time.
+        ---
+        wake up time = departure time - preparation time
+        """
         commute_object = timedelta(minutes=self.commute)
         work_time_object = datetime.strptime(self.work_time, "%B %d, %Y %I:%M %p")
         prep_object = timedelta(hours=self.prep)
@@ -63,15 +90,14 @@ class Day:
 
 thursday = Day(True, "August 17, 2022 2:00 AM", 30, 1, 8)
 
-print(
-    f"\ntime_in_bed = {thursday.time_in_bed}"
-    f"\nhave_work = {thursday.have_work}"
-    f"\nwork_time = {thursday.work_time}"
-    f"\ncommute = {thursday.commute} minutes"
-    f"\nbed time = {thursday.bed_time()}"
-    f"\nwake up = {thursday.wake_up()}"
-    f"\nprep time = {thursday.prep} hour"
-    f"\ndeparture = {thursday.departure()}"
-)
-
-print(f"\nProcess finished in {time.time() - start_time} seconds")
+# print(
+#     f"\ntime_in_bed = {thursday.time_in_bed}"
+#     f"\nhave_work = {thursday.have_work}"
+#     f"\nwork_time = {thursday.work_time}"
+#     f"\ncommute = {thursday.commute} minutes"
+#     f"\nbed time = {thursday.bed_time()}"
+#     f"\nwake up = {thursday.wake_up()}"
+#     f"\nprep time = {thursday.prep} hour"
+#     f"\ndeparture = {thursday.departure()}"
+# )
+print(type(thursday.wake_up))
