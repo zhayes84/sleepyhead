@@ -20,3 +20,8 @@ A system to allow me to input:
  4. Desired number of hours to be in bed
 
 Which will then output what time I need to go to bed each day to achieve `x` number of hours in bed each night. I personally aim for hours in bed vs hours of sleep because my sleep patterns vary wildly each night.
+
+# To-Do
+
+ - [ ] Add try/else/except/finally functionality to `departure()`, `bed_time()`, and `wake_up()`
+ - [ ] Ability to output daily and/or weekly schedule to PDF
