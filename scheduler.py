@@ -98,8 +98,6 @@ class Day:
         Calculates the time to wake up based on subtracting preparation time from departure time.
         ---
         wake up time = departure time - preparation time
-        """
-        """_summary_
 
         Returns:
             str: date in MMMM DD, YYYY HH:MM AM/PM format
