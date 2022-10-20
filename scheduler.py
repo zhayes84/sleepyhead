@@ -43,7 +43,7 @@ class Day:
         """Constructs all the necessary attributes for the Day object.
 
         Args:
-            have_work (str): whether the user has work on the day
+            have_work (bool): whether the user has work on the day
             work_time (str): time to arrive at work
             commute (int): time required to drive from home to work
             prep (int): time required to prepare for work after waking up
